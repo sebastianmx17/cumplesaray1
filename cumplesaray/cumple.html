@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Saray</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      text-align: center;
+      overflow-x: hidden;
+
+      /* 🌟 Fondo Snoopy */
+      background-image: url("snoopy2.jpg");
+      background-repeat: no-repeat;
+      background-size: 1345px;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #d63384;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #d63384;
+    }
+
+    /* 🎁 Caja de regalo nueva (imagen) */
+    .gift-box {
+      position: relative;
+      width: 220px;
+      height: auto;
+      margin: 180px auto;
+      cursor: pointer;
+      animation: bounce 1.5s infinite;
+    }
+
+    .gift-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Animación rebote */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* 🎈 Globos animados */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      background: #ff4d6d;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in;
+    }
+
+    .balloon:before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: #555;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+    }
+
+    .balloon:nth-child(1) { left: 10%; background: #ff4d6d; animation-duration: 7s; }
+    .balloon:nth-child(2) { left: 30%; background: #ffd166; animation-duration: 9s; }
+    .balloon:nth-child(3) { left: 50%; background: #06d6a0; animation-duration: 11s; }
+    .balloon:nth-child(4) { left: 70%; background: #118ab2; animation-duration: 8s; }
+    .balloon:nth-child(5) { left: 90%; background: #ef476f; animation-duration: 10s; }
+
+    /* Estilos del modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0, 0, 0, 0.7);
+      animation: fadeIn 0.5s;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 8% auto;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: slideIn 0.6s;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      color: #d63384;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
+
+    .modal-content p {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .close-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background-color: #d63384;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideIn {
+      from {transform: translateY(-50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    /* 🎉 Canvas para confeti */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2000;
+    }
+    /* 🐶 Snoopy flotante */
+    .snoopy {
+      position: absolute;
+      bottom: -150px;
+      width: 100px; /* ajusta el tamaño de la imagen */
+      animation: float 12s infinite ease-in;
+    }
+
+    .snoopy img {
+      width: 100%;
+      height: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- 🎈 Globos -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+
+  <!-- 🐶 Snoopy flotando -->
+  <div class="snoopy" style="left: 20%; animation-duration: 10s;">
+  <img src="snoopy2.jpg" alt="Snoopy flotante">
+  </div>
+  <div class="snoopy" style="left: 60%; animation-duration: 10s;">
+  <img src="snoopy2.jpg" alt="Snoopy flotante">
+  </div>
+  <div class="snoopy" style="left: 20%; animation-duration: 10s;">
+  <img src="snoopy2.jpg" alt="Snoopy flotante">
+  </div>
+  <div class="snoopy" style="left: 60%; animation-duration: 10s;">
+  <img src="snoopy2.jpg" alt="Snoopy flotante">
+  </div>
+
+
+  <!-- 🎁 Pantalla inicial -->
+  <h1>🎀 Para ti, Saray 🎀</h1>
+  <div class="gift-box" id="gift" onclick="abrirCaja()">
+    <img src="caja.png" alt="Caja sorpresa">
+  </div>
+  <button class="btn" onclick="abrirCaja()">Presiona</button>
+
+  <!-- Modal (Carta) -->
+  <div id="cartaModal" class="modal">
+    <div class="modal-content">
+      <h2>💌 Para ti, Saray 💌</h2>
+      <img src="snoopy.jpg" alt="Imagen romántica">
+      <p>
+        Saray, hoy llegas a una etapa muy especial en tu vida, un momento que marca el inicio de nuevos sueños, metas y experiencias. Cumplir 15 no es cualquier cosa, es una celebración de todo lo que eres y de todo lo maravilloso que está por venir.
+      </p>
+      <p>
+        Quiero desearte que este nuevo camino esté lleno de felicidad, que cada día brille con sonrisas y que cada paso que des te acerque más a lo que sueñas. Que nunca te falte la alegría que te caracteriza, porque esa luz tuya hace que todo sea diferente y especial.
+      </p>
+      <p>
+        Eres una persona increíble, con un corazón enorme y una energía que contagia. Me siento afortunado de tener tu amistad y de poder compartir momentos contigo. Ojalá que este cumpleaños sea solo el inicio de un año lleno de aventuras, aprendizajes y recuerdos inolvidables.
+      </p>
+      <p><b>Feliz cumpleaños número 15, Saray 🎉💖. Disfruta cada instante de esta nueva etapa y recuerda siempre lo valiosa que eres. Con mucho cariño, Juanse 💕</b></p>
+      <button class="close-btn" onclick="cerrarCarta()">Volver al inicio</button>
+    </div>
+  </div>
+
+  <!-- 🎉 Canvas para confeti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    function abrirCaja() {
+      document.getElementById("cartaModal").style.display = "block";
+      lanzarConfeti();
+    }
+
+    function cerrarCarta() {
+      document.getElementById("cartaModal").style.display = "none";
+    }
+
+    // 🎉 Confeti
+    function lanzarConfeti() {
+      const canvas = document.getElementById("confetti-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const confetti = [];
+      const colors = ["#ff4d6d", "#ffd166", "#06d6a0", "#118ab2", "#ef476f", "#d63384"];
+
+      for (let i = 0; i < 150; i++) {
+        confetti.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 150 + 50,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          tilt: Math.floor(Math.random() * 10) - 10,
+          tiltAngleIncremental: (Math.random() * 0.07) + 0.05,
+          tiltAngle: 0
+        });
+      }
+
+      function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confetti.forEach(c => {
+          ctx.beginPath();
+          ctx.fillStyle = c.color;
+          ctx.ellipse(c.x, c.y, c.r, c.r / 2, c.tilt, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        update();
+      }
+
+      function update() {
+        confetti.forEach(c => {
+          c.tiltAngle += c.tiltAngleIncremental;
+          c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
+          c.x += Math.sin(c.d);
+          c.tilt = Math.sin(c.tiltAngle) * 15;
+
+          if (c.y > canvas.height) {
+            c.x = Math.random() * canvas.width;
+            c.y = -20;
+          }
+        });
+      }
+
+      setInterval(drawConfetti, 20);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
